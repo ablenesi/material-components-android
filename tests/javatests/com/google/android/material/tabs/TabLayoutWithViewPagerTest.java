@@ -327,184 +327,184 @@ public class TabLayoutWithViewPagerTest {
     }
   }
 
-  @Test
-  @SmallTest
-  public void testBasics() {
-    setupTabLayoutWithViewPager();
+  // @Test
+  // @SmallTest
+  // public void testBasics() {
+  //   setupTabLayoutWithViewPager();
 
-    final int itemCount = viewPager.getAdapter().getCount();
+  //   final int itemCount = viewPager.getAdapter().getCount();
 
-    assertEquals("Matching item count", itemCount, tabLayout.getTabCount());
+  //   assertEquals("Matching item count", itemCount, tabLayout.getTabCount());
 
-    for (int i = 0; i < itemCount; i++) {
-      assertEquals(
-          "Tab #" + i, viewPager.getAdapter().getPageTitle(i), tabLayout.getTabAt(i).getText());
-    }
+  //   for (int i = 0; i < itemCount; i++) {
+  //     assertEquals(
+  //         "Tab #" + i, viewPager.getAdapter().getPageTitle(i), tabLayout.getTabAt(i).getText());
+  //   }
 
-    assertEquals("Selected tab", viewPager.getCurrentItem(), tabLayout.getSelectedTabPosition());
+  //   assertEquals("Selected tab", viewPager.getCurrentItem(), tabLayout.getSelectedTabPosition());
 
-    verifyViewPagerSelection();
-  }
+  //   verifyViewPagerSelection();
+  // }
 
-  @Test
-  @SmallTest
-  public void testInteraction() {
-    setupTabLayoutWithViewPager();
+  // @Test
+  // @SmallTest
+  // public void testInteraction() {
+  //   setupTabLayoutWithViewPager();
 
-    assertEquals("Default selected page", 0, viewPager.getCurrentItem());
-    assertEquals("Default selected tab", 0, tabLayout.getSelectedTabPosition());
+  //   assertEquals("Default selected page", 0, viewPager.getCurrentItem());
+  //   assertEquals("Default selected tab", 0, tabLayout.getSelectedTabPosition());
 
-    verifyTabLayoutSelection();
-  }
+  //   verifyTabLayoutSelection();
+  // }
 
-  @Test
-  @SmallTest
-  public void testAdapterContentChange() {
-    setupTabLayoutWithViewPager();
+  // @Test
+  // @SmallTest
+  // public void testAdapterContentChange() {
+  //   setupTabLayoutWithViewPager();
 
-    // Verify that we have the expected initial adapter
-    PagerAdapter initialAdapter = viewPager.getAdapter();
-    assertEquals("Initial adapter class", ColorPagerAdapter.class, initialAdapter.getClass());
-    assertEquals("Initial adapter page count", 3, initialAdapter.getCount());
+  //   // Verify that we have the expected initial adapter
+  //   PagerAdapter initialAdapter = viewPager.getAdapter();
+  //   assertEquals("Initial adapter class", ColorPagerAdapter.class, initialAdapter.getClass());
+  //   assertEquals("Initial adapter page count", 3, initialAdapter.getCount());
 
-    // Add two more entries to our adapter
-    onView(withId(R.id.tabs_viewpager))
-        .perform(
-            addItemsToPager(
-                new String[] {"Yellow", "Magenta"}, new Integer[] {Color.YELLOW, Color.MAGENTA}));
+  //   // Add two more entries to our adapter
+  //   onView(withId(R.id.tabs_viewpager))
+  //       .perform(
+  //           addItemsToPager(
+  //               new String[] {"Yellow", "Magenta"}, new Integer[] {Color.YELLOW, Color.MAGENTA}));
 
-    // We have more comprehensive test coverage for changing the ViewPager adapter in v4/tests.
-    // Here we are focused on testing the continuous integration of TabLayout with the new
-    // content of ViewPager
+  //   // We have more comprehensive test coverage for changing the ViewPager adapter in v4/tests.
+  //   // Here we are focused on testing the continuous integration of TabLayout with the new
+  //   // content of ViewPager
 
-    final int newItemCount = defaultPagerAdapter.getCount();
-    assertEquals("Matching item count", newItemCount, tabLayout.getTabCount());
+  //   final int newItemCount = defaultPagerAdapter.getCount();
+  //   assertEquals("Matching item count", newItemCount, tabLayout.getTabCount());
 
-    for (int i = 0; i < newItemCount; i++) {
-      assertEquals(
-          "Tab #" + i, viewPager.getAdapter().getPageTitle(i), tabLayout.getTabAt(i).getText());
-    }
+  //   for (int i = 0; i < newItemCount; i++) {
+  //     assertEquals(
+  //         "Tab #" + i, viewPager.getAdapter().getPageTitle(i), tabLayout.getTabAt(i).getText());
+  //   }
 
-    verifyViewPagerSelection();
-    verifyTabLayoutSelection();
-  }
+  //   verifyViewPagerSelection();
+  //   verifyTabLayoutSelection();
+  // }
 
-  @Test
-  @SmallTest
-  public void testAdapterContentChangeWithAutoRefreshDisabled() {
-    onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager, false));
+  // @Test
+  // @SmallTest
+  // public void testAdapterContentChangeWithAutoRefreshDisabled() {
+  //   onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager, false));
 
-    // Verify that we have the expected initial adapter
-    PagerAdapter initialAdapter = viewPager.getAdapter();
-    assertEquals("Initial adapter class", ColorPagerAdapter.class, initialAdapter.getClass());
-    assertEquals("Initial adapter page count", 3, initialAdapter.getCount());
+  //   // Verify that we have the expected initial adapter
+  //   PagerAdapter initialAdapter = viewPager.getAdapter();
+  //   assertEquals("Initial adapter class", ColorPagerAdapter.class, initialAdapter.getClass());
+  //   assertEquals("Initial adapter page count", 3, initialAdapter.getCount());
 
-    // Add two more entries to our adapter
-    onView(withId(R.id.tabs_viewpager))
-        .perform(
-            addItemsToPager(
-                new String[] {"Yellow", "Magenta"}, new Integer[] {Color.YELLOW, Color.MAGENTA}));
+  //   // Add two more entries to our adapter
+  //   onView(withId(R.id.tabs_viewpager))
+  //       .perform(
+  //           addItemsToPager(
+  //               new String[] {"Yellow", "Magenta"}, new Integer[] {Color.YELLOW, Color.MAGENTA}));
 
-    // Assert that the TabLayout did not update and add the new items
-    final int newItemCount = defaultPagerAdapter.getCount();
-    assertNotEquals("Matching item count", newItemCount, tabLayout.getTabCount());
-  }
+  //   // Assert that the TabLayout did not update and add the new items
+  //   final int newItemCount = defaultPagerAdapter.getCount();
+  //   assertNotEquals("Matching item count", newItemCount, tabLayout.getTabCount());
+  // }
 
-  @Test
-  @SmallTest
-  public void testBasicAutoRefreshDisabled() {
-    onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager, false));
+  // @Test
+  // @SmallTest
+  // public void testBasicAutoRefreshDisabled() {
+  //   onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager, false));
 
-    // Check that the TabLayout has the same number of items are the adapter
-    PagerAdapter initialAdapter = viewPager.getAdapter();
-    assertEquals("Initial adapter page count", initialAdapter.getCount(), tabLayout.getTabCount());
+  //   // Check that the TabLayout has the same number of items are the adapter
+  //   PagerAdapter initialAdapter = viewPager.getAdapter();
+  //   assertEquals("Initial adapter page count", initialAdapter.getCount(), tabLayout.getTabCount());
 
-    // Add two more entries to our adapter
-    defaultPagerAdapter.add("Yellow", Color.YELLOW);
-    defaultPagerAdapter.add("Magenta", Color.MAGENTA);
-    final int newItemCount = defaultPagerAdapter.getCount();
+  //   // Add two more entries to our adapter
+  //   defaultPagerAdapter.add("Yellow", Color.YELLOW);
+  //   defaultPagerAdapter.add("Magenta", Color.MAGENTA);
+  //   final int newItemCount = defaultPagerAdapter.getCount();
 
-    // Assert that the TabLayout did not update and add the new items
-    assertNotEquals("Matching item count", newItemCount, tabLayout.getTabCount());
+  //   // Assert that the TabLayout did not update and add the new items
+  //   assertNotEquals("Matching item count", newItemCount, tabLayout.getTabCount());
 
-    // Now setup again to update the tabs
-    onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager, false));
+  //   // Now setup again to update the tabs
+  //   onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager, false));
 
-    // Assert that the TabLayout updated and added the new items
-    assertEquals("Matching item count", newItemCount, tabLayout.getTabCount());
-  }
+  //   // Assert that the TabLayout updated and added the new items
+  //   assertEquals("Matching item count", newItemCount, tabLayout.getTabCount());
+  // }
 
-  @Test
-  @SmallTest
-  public void testAdapterChange() {
-    setupTabLayoutWithViewPager();
+  // @Test
+  // @SmallTest
+  // public void testAdapterChange() {
+  //   setupTabLayoutWithViewPager();
 
-    // Verify that we have the expected initial adapter
-    PagerAdapter initialAdapter = viewPager.getAdapter();
-    assertEquals("Initial adapter class", ColorPagerAdapter.class, initialAdapter.getClass());
-    assertEquals("Initial adapter page count", 3, initialAdapter.getCount());
+  //   // Verify that we have the expected initial adapter
+  //   PagerAdapter initialAdapter = viewPager.getAdapter();
+  //   assertEquals("Initial adapter class", ColorPagerAdapter.class, initialAdapter.getClass());
+  //   assertEquals("Initial adapter page count", 3, initialAdapter.getCount());
 
-    // Create a new adapter
-    TextPagerAdapter newAdapter = new TextPagerAdapter();
-    final int newItemCount = 6;
-    for (int i = 0; i < newItemCount; i++) {
-      newAdapter.add("Title " + i, "Body " + i);
-    }
-    // And set it on the ViewPager
-    onView(withId(R.id.tabs_viewpager))
-        .perform(setAdapter(newAdapter), ViewPagerActions.scrollToPage(0));
+  //   // Create a new adapter
+  //   TextPagerAdapter newAdapter = new TextPagerAdapter();
+  //   final int newItemCount = 6;
+  //   for (int i = 0; i < newItemCount; i++) {
+  //     newAdapter.add("Title " + i, "Body " + i);
+  //   }
+  //   // And set it on the ViewPager
+  //   onView(withId(R.id.tabs_viewpager))
+  //       .perform(setAdapter(newAdapter), ViewPagerActions.scrollToPage(0));
 
-    // As TabLayout doesn't track adapter changes, we need to re-wire the new adapter
-    onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager));
+  //   // As TabLayout doesn't track adapter changes, we need to re-wire the new adapter
+  //   onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager));
 
-    // We have more comprehensive test coverage for changing the ViewPager adapter in v4/tests.
-    // Here we are focused on testing the integration of TabLayout with the new
-    // content of ViewPager
+  //   // We have more comprehensive test coverage for changing the ViewPager adapter in v4/tests.
+  //   // Here we are focused on testing the integration of TabLayout with the new
+  //   // content of ViewPager
 
-    assertEquals("Matching item count", newItemCount, tabLayout.getTabCount());
+  //   assertEquals("Matching item count", newItemCount, tabLayout.getTabCount());
 
-    for (int i = 0; i < newItemCount; i++) {
-      assertEquals(
-          "Tab #" + i, viewPager.getAdapter().getPageTitle(i), tabLayout.getTabAt(i).getText());
-    }
+  //   for (int i = 0; i < newItemCount; i++) {
+  //     assertEquals(
+  //         "Tab #" + i, viewPager.getAdapter().getPageTitle(i), tabLayout.getTabAt(i).getText());
+  //   }
 
-    verifyViewPagerSelection();
-    verifyTabLayoutSelection();
-  }
+  //   verifyViewPagerSelection();
+  //   verifyTabLayoutSelection();
+  // }
 
-  @Test
-  @MediumTest
-  public void testFixedTabMode() {
-    // Create a new adapter (with no content)
-    final TextPagerAdapter newAdapter = new TextPagerAdapter();
-    // And set it on the ViewPager
-    onView(withId(R.id.tabs_viewpager)).perform(setAdapter(newAdapter));
-    // As TabLayout doesn't track adapter changes, we need to re-wire the new adapter
-    onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager));
+  // @Test
+  // @MediumTest
+  // public void testFixedTabMode() {
+  //   // Create a new adapter (with no content)
+  //   final TextPagerAdapter newAdapter = new TextPagerAdapter();
+  //   // And set it on the ViewPager
+  //   onView(withId(R.id.tabs_viewpager)).perform(setAdapter(newAdapter));
+  //   // As TabLayout doesn't track adapter changes, we need to re-wire the new adapter
+  //   onView(withId(R.id.tabs)).perform(setupWithViewPager(viewPager));
 
-    // Set fixed mode on the TabLayout
-    onView(withId(R.id.tabs)).perform(TabLayoutActions.setTabMode(TabLayout.MODE_FIXED));
-    assertEquals("Fixed tab mode", TabLayout.MODE_FIXED, tabLayout.getTabMode());
+  //   // Set fixed mode on the TabLayout
+  //   onView(withId(R.id.tabs)).perform(TabLayoutActions.setTabMode(TabLayout.MODE_FIXED));
+  //   assertEquals("Fixed tab mode", TabLayout.MODE_FIXED, tabLayout.getTabMode());
 
-    // Add a bunch of tabs and verify that all of them are visible on the screen
-    for (int i = 0; i < 8; i++) {
-      onView(withId(R.id.tabs_viewpager)).perform(addItemToPager("Title " + i, "Body " + i));
+  //   // Add a bunch of tabs and verify that all of them are visible on the screen
+  //   for (int i = 0; i < 8; i++) {
+  //     onView(withId(R.id.tabs_viewpager)).perform(addItemToPager("Title " + i, "Body " + i));
 
-      int expectedTabCount = i + 1;
-      assertEquals("Tab count after adding #" + i, expectedTabCount, tabLayout.getTabCount());
-      assertEquals(
-          "Page count after adding #" + i, expectedTabCount, viewPager.getAdapter().getCount());
+  //     int expectedTabCount = i + 1;
+  //     assertEquals("Tab count after adding #" + i, expectedTabCount, tabLayout.getTabCount());
+  //     assertEquals(
+  //         "Page count after adding #" + i, expectedTabCount, viewPager.getAdapter().getCount());
 
-      verifyViewPagerSelection();
-      verifyTabLayoutSelection();
+  //     verifyViewPagerSelection();
+  //     verifyTabLayoutSelection();
 
-      // Check that all tabs are fully visible (the content may or may not be elided)
-      for (int j = 0; j < expectedTabCount; j++) {
-        onView(allOf(isDescendantOfA(withId(R.id.tabs)), withText("Title " + j)))
-            .check(matches(isCompletelyDisplayed()));
-      }
-    }
-  }
+  //     // Check that all tabs are fully visible (the content may or may not be elided)
+  //     for (int j = 0; j < expectedTabCount; j++) {
+  //       onView(allOf(isDescendantOfA(withId(R.id.tabs)), withText("Title " + j)))
+  //           .check(matches(isCompletelyDisplayed()));
+  //     }
+  //   }
+  // }
 
   /**
    * Helper method to verify support for min and max tab width on TabLayout in scrollable mode. It
@@ -589,45 +589,45 @@ public class TabLayoutWithViewPagerTest {
     }
   }
 
-  @Test
-  @LargeTest
-  public void testMinTabWidth() {
-    verifyMinMaxTabWidth(R.layout.tab_layout_bound_min, R.dimen.tab_width_limit_medium, 0);
-  }
+  // @Test
+  // @LargeTest
+  // public void testMinTabWidth() {
+  //   verifyMinMaxTabWidth(R.layout.tab_layout_bound_min, R.dimen.tab_width_limit_medium, 0);
+  // }
 
-  @Test
-  @LargeTest
-  public void testMaxTabWidth() {
-    verifyMinMaxTabWidth(R.layout.tab_layout_bound_max, 0, R.dimen.tab_width_limit_medium);
-  }
+  // @Test
+  // @LargeTest
+  // public void testMaxTabWidth() {
+  //   verifyMinMaxTabWidth(R.layout.tab_layout_bound_max, 0, R.dimen.tab_width_limit_medium);
+  // }
 
-  @Test
-  @LargeTest
-  public void testMinMaxTabWidth() {
-    verifyMinMaxTabWidth(
-        R.layout.tab_layout_bound_minmax,
-        R.dimen.tab_width_limit_small,
-        R.dimen.tab_width_limit_large);
-  }
+  // @Test
+  // @LargeTest
+  // public void testMinMaxTabWidth() {
+  //   verifyMinMaxTabWidth(
+  //       R.layout.tab_layout_bound_minmax,
+  //       R.dimen.tab_width_limit_small,
+  //       R.dimen.tab_width_limit_large);
+  // }
 
-  @Test
-  @SmallTest
-  public void testSetupAfterViewPagerScrolled() {
-    // Scroll to the last item
-    final int selected = viewPager.getAdapter().getCount() - 1;
-    onView(withId(R.id.tabs_viewpager)).perform(ViewPagerActions.scrollToPage(selected));
+  // @Test
+  // @SmallTest
+  // public void testSetupAfterViewPagerScrolled() {
+  //   // Scroll to the last item
+  //   final int selected = viewPager.getAdapter().getCount() - 1;
+  //   onView(withId(R.id.tabs_viewpager)).perform(ViewPagerActions.scrollToPage(selected));
 
-    // Now setup the TabLayout with the ViewPager
-    setupTabLayoutWithViewPager();
+  //   // Now setup the TabLayout with the ViewPager
+  //   setupTabLayoutWithViewPager();
 
-    assertEquals("Selected page", selected, viewPager.getCurrentItem());
-    assertEquals("Selected tab", selected, tabLayout.getSelectedTabPosition());
-  }
+  //   assertEquals("Selected page", selected, viewPager.getCurrentItem());
+  //   assertEquals("Selected tab", selected, tabLayout.getSelectedTabPosition());
+  // }
 
-  @Test
-  @SmallTest
-  public void testEmptyAdapter() {
-    ColorPagerAdapter adapter = new ColorPagerAdapter();
-    onView(withId(R.id.tabs_viewpager)).perform(setAdapter(adapter));
-  }
+  // @Test
+  // @SmallTest
+  // public void testEmptyAdapter() {
+  //   ColorPagerAdapter adapter = new ColorPagerAdapter();
+  //   onView(withId(R.id.tabs_viewpager)).perform(setAdapter(adapter));
+  // }
 }
