@@ -44,6 +44,11 @@ android:
   licenses:
     - 'android-sdk-license-.+'
 
+addons:
+  apt:
+    packages:
+      - lynx
+
 before_script:
   - ./travis_before_script.sh
 
@@ -52,3 +57,6 @@ script:
   - ./travis_run_unit_tests.sh
   - travis_wait ./travis_set_up_emulator.sh
   - travis_wait ./travis_run_instrumentation_tests.sh
+
+  after_failure:
+    - if [ -f /home/travis/build/material-components/material-components-android/tests/build/reports/androidTests/connected/index.html ]; then lynx -dump /home/travis/build/material-components/material-components-android/tests/build/reports/androidTests/connected/index.html; fi
