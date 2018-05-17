@@ -74,7 +74,7 @@ import com.google.android.material.testapp.TextInputLayoutActivity;
 import com.google.android.material.testapp.base.RecreatableAppCompatActivity;
 import com.google.android.material.testutils.ActivityUtils;
 import com.google.android.material.testutils.TestUtils;
-import com.google.android.material.testutils.ViewStructureImpl;
+// import com.google.android.material.testutils.ViewStructureImpl;
 import android.support.test.annotation.UiThreadTest;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewAssertion;
@@ -419,29 +419,29 @@ public class TextInputLayoutTest {
     assertEquals(INPUT_TEXT, info.hintText);
   }
 
-  @UiThreadTest
-  @Test
-  @SdkSuppress(minSdkVersion = Build.VERSION_CODES.O)
-  public void testDispatchProvideAutofillStructure() {
-    final Activity activity = activityTestRule.getActivity();
+  // @UiThreadTest
+  // @Test
+  // @SdkSuppress(minSdkVersion = Build.VERSION_CODES.O)
+  // public void testDispatchProvideAutofillStructure() {
+  //   final Activity activity = activityTestRule.getActivity();
 
-    final TextInputLayout layout = activity.findViewById(R.id.textinput);
+  //   final TextInputLayout layout = activity.findViewById(R.id.textinput);
 
-    final ViewStructureImpl structure = new ViewStructureImpl();
-    layout.dispatchProvideAutofillStructure(structure, 0);
+  //   final ViewStructureImpl structure = new ViewStructureImpl();
+  //   layout.dispatchProvideAutofillStructure(structure, 0);
 
-    assertEquals(2, structure.getChildCount()); // EditText and TextView
+  //   assertEquals(2, structure.getChildCount()); // EditText and TextView
 
-    // Asserts the structure.
-    final ViewStructureImpl childStructure = structure.getChildAt(0);
-    assertEquals(EditText.class.getName(), childStructure.getClassName());
-    assertEquals("Hint to the user", childStructure.getHint());
+  //   // Asserts the structure.
+  //   final ViewStructureImpl childStructure = structure.getChildAt(0);
+  //   assertEquals(EditText.class.getName(), childStructure.getClassName());
+  //   assertEquals("Hint to the user", childStructure.getHint());
 
-    // Make sure the widget's hint was restored.
-    assertEquals("Hint to the user", layout.getHint());
-    final EditText editText = activity.findViewById(R.id.textinput_edittext);
-    assertNull(editText.getHint());
-  }
+  //   // Make sure the widget's hint was restored.
+  //   assertEquals("Hint to the user", layout.getHint());
+  //   final EditText editText = activity.findViewById(R.id.textinput_edittext);
+  //   assertNull(editText.getHint());
+  // }
   @UiThreadTest
   @Test
   public void testDrawableStateChanged() {
