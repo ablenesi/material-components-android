@@ -177,17 +177,17 @@ public class TextInputLayoutTest {
     onView(withId(R.id.textinput_box_outline)).check(isCutoutOpen(true));
   }
 
-  @Test
-  public void testOutlineBoxHintExpandHidesCutout() {
-    // Type some text on the outline box that has a hint.
-    onView(withId(R.id.textinput_edittext_outline)).perform(typeText(INPUT_TEXT));
-    // Remove the text so that the hint will go away when the text box loses focus.
-    onView(withId(R.id.textinput_edittext_outline)).perform(clearText());
-    // Type some text on another text field to remove focus from the outline box.
-    onView(withId(R.id.textinput_edittext_filled)).perform(typeText(INPUT_TEXT));
-    // Check that the cutout is closed.
-    onView(withId(R.id.textinput_box_outline)).check(isCutoutOpen(false));
-  }
+  // @Test
+  // public void testOutlineBoxHintExpandHidesCutout() {
+  //   // Type some text on the outline box that has a hint.
+  //   onView(withId(R.id.textinput_edittext_outline)).perform(typeText(INPUT_TEXT));
+  //   // Remove the text so that the hint will go away when the text box loses focus.
+  //   onView(withId(R.id.textinput_edittext_outline)).perform(clearText());
+  //   // Type some text on another text field to remove focus from the outline box.
+  //   onView(withId(R.id.textinput_edittext_filled)).perform(typeText(INPUT_TEXT));
+  //   // Check that the cutout is closed.
+  //   onView(withId(R.id.textinput_box_outline)).check(isCutoutOpen(false));
+  // }
 
   @Test
   public void testSetErrorEnablesErrorIsDisplayed() {
