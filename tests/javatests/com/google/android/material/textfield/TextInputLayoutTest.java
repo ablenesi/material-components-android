@@ -161,13 +161,13 @@ public class TextInputLayoutTest {
     onView(withId(R.id.textinput_box_filled)).check(isCutoutOpen(false));
   }
 
-  @Test
-  public void testOutlineBoxNoHintNoCutout() {
-    // Type some text on the outline box without a hint.
-    onView(withId(R.id.textinput_edittext_outline_no_hint)).perform(typeText(INPUT_TEXT));
-    // Check that there is no cutout.
-    onView(withId(R.id.textinput_box_outline_no_hint)).check(isCutoutOpen(false));
-  }
+  // @Test
+  // public void testOutlineBoxNoHintNoCutout() {
+  //   // Type some text on the outline box without a hint.
+  //   onView(withId(R.id.textinput_edittext_outline_no_hint)).perform(typeText(INPUT_TEXT));
+  //   // Check that there is no cutout.
+  //   onView(withId(R.id.textinput_box_outline_no_hint)).check(isCutoutOpen(false));
+  // }
 
   @Test
   public void testOutlineBoxHintCollapseCreatesCutout() {
