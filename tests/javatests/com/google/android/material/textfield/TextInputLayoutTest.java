@@ -621,10 +621,10 @@ public class TextInputLayoutTest {
     onView(withId(R.id.textinput_edittext_pwd)).check(matches(hasFocus()));
   }
 
-  @Test
-  public void testTextSetViaAttributeCollapsedHint() {
-    onView(withId(R.id.textinput_with_text)).check(isHintExpanded(false));
-  }
+  // @Test
+  // public void testTextSetViaAttributeCollapsedHint() {
+  //   onView(withId(R.id.textinput_with_text)).check(isHintExpanded(false));
+  // }
 
   @Test
   @LargeTest
