@@ -742,35 +742,35 @@ public class TextInputLayoutTest {
     onView(withId(R.id.textinput_box_filled)).check(isBoxCornerRadiusTopEnd(cornerRadiusMedium));
   }
 
-  @Test
-  public void testBoxTopEndCornerRadiusChangesWithResource() {
-    float cornerRadiusSmall =
-        activityTestRule.getActivity().getResources().getDimension(R.dimen.corner_radius_small);
-    float cornerRadiusMedium =
-        activityTestRule.getActivity().getResources().getDimension(R.dimen.corner_radius_medium);
+  // @Test
+  // public void testBoxTopEndCornerRadiusChangesWithResource() {
+  //   float cornerRadiusSmall =
+  //       activityTestRule.getActivity().getResources().getDimension(R.dimen.corner_radius_small);
+  //   float cornerRadiusMedium =
+  //       activityTestRule.getActivity().getResources().getDimension(R.dimen.corner_radius_medium);
 
-    // Set the outline box's corner radii to cornerRadiusSmall.
-    onView(withId(R.id.textinput_box_outline))
-        .perform(
-            setBoxCornerRadii(
-                R.dimen.corner_radius_small,
-                R.dimen.corner_radius_small,
-                R.dimen.corner_radius_small,
-                R.dimen.corner_radius_small));
+  //   // Set the outline box's corner radii to cornerRadiusSmall.
+  //   onView(withId(R.id.textinput_box_outline))
+  //       .perform(
+  //           setBoxCornerRadii(
+  //               R.dimen.corner_radius_small,
+  //               R.dimen.corner_radius_small,
+  //               R.dimen.corner_radius_small,
+  //               R.dimen.corner_radius_small));
 
-    // Check that the outline box's top end corner radius is cornerRadiusSmall.
-    onView(withId(R.id.textinput_box_outline)).check(isBoxCornerRadiusTopEnd(cornerRadiusSmall));
-    // Set the outline box's corner radii to corner_radius_medium.
-    onView(withId(R.id.textinput_box_outline))
-        .perform(
-            setBoxCornerRadii(
-                R.dimen.corner_radius_medium,
-                R.dimen.corner_radius_medium,
-                R.dimen.corner_radius_medium,
-                R.dimen.corner_radius_medium));
-    // Check that the outline box's top end corner radius is cornerRadiusMedium.
-    onView(withId(R.id.textinput_box_outline)).check(isBoxCornerRadiusTopEnd(cornerRadiusMedium));
-  }
+  //   // Check that the outline box's top end corner radius is cornerRadiusSmall.
+  //   onView(withId(R.id.textinput_box_outline)).check(isBoxCornerRadiusTopEnd(cornerRadiusSmall));
+  //   // Set the outline box's corner radii to corner_radius_medium.
+  //   onView(withId(R.id.textinput_box_outline))
+  //       .perform(
+  //           setBoxCornerRadii(
+  //               R.dimen.corner_radius_medium,
+  //               R.dimen.corner_radius_medium,
+  //               R.dimen.corner_radius_medium,
+  //               R.dimen.corner_radius_medium));
+  //   // Check that the outline box's top end corner radius is cornerRadiusMedium.
+  //   onView(withId(R.id.textinput_box_outline)).check(isBoxCornerRadiusTopEnd(cornerRadiusMedium));
+  // }
 
   private static ViewAssertion isHintExpanded(final boolean expanded) {
     return new ViewAssertion() {
