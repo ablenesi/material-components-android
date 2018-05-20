@@ -31,7 +31,7 @@ To use it:
     ```groovy
       dependencies {
         // ...
-        compile 'com.google.android.material:material:1.0.0-alpha1'
+        implementation 'com.google.android.material:material:1.0.0-alpha1'
         // ...
       }
     ```
